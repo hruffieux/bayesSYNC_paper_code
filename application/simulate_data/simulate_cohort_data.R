@@ -44,8 +44,9 @@
 ## expected to reproduce the numbers of the paper.
 ##
 ## Usage, from the root of the repository:
-##   Rscript application/simulate_data/simulate_cohort_data.R [seed]
-## The seed defaults to 1, which gives the data sets described in the README.
+##   Rscript application/simulate_data/simulate_cohort_data.R
+## The seed is fixed at 8, which gives the data sets described in the README
+## and the biomarker panel analysed in Supplementary Material S10.
 ##
 ## Writes, in data_dir (data/ by default):
 ##   simulated_biomarker_panel.RData   df_comb, df_info, all_var, metabolite_names
@@ -59,8 +60,7 @@ rm(list = ls())
 
 source("R/paths.R")
 
-args <- commandArgs(trailingOnly = TRUE)
-seed <- if (length(args) >= 1) as.integer(args[1]) else 1
+seed <- 8 # the data set of Supplementary Material S10
 set.seed(seed)
 
 cal_dir <- file.path("application", "simulate_data", "calibration")
@@ -269,7 +269,8 @@ save(df_comb, df_info, all_var, metabolite_names,
 
 # generating values, for the comparison of Supplementary Material S10
 saveRDS(list(B = cal_panel$B, list_Phi = cal_panel$list_Phi, time_g = cal_panel$time_g,
-             list_zeta = list_zeta_panel, severity = df_cohort[names(list_zeta_panel), "severity"]),
+             list_zeta = list_zeta_panel, severity = df_cohort[names(list_zeta_panel), "severity"],
+             seed = seed),
         file.path(data_dir, "simulated_biomarker_panel_truth.rds"))
 cat("Biomarker panel: ", sum(df_cohort$in_panel), " patients, ", nrow(df_samples_panel),
     " samples, ", sum(df_cohort$dead[df_cohort$in_panel]), " deaths in the window, ",

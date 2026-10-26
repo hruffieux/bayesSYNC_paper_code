@@ -22,6 +22,8 @@
 ## the window retained (N = 88 on the real data, seed 1). Giving excl_dead as
 ## second argument excludes them, which is the sensitivity analysis of
 ## Supplementary Material S7 (N = 83 on the real data, fitted with seed 20).
+## On the simulated data the seed defaults to 8, the seed with which the data
+## were generated, which gives the fit of Supplementary Material S10.
 ##
 ## Writes, in its own folder under out_dir: output.RData (the whole workspace,
 ## read by the other scripts of this folder), out.txt, and the panels of
@@ -46,15 +48,15 @@ require(tidyr)
 require(dplyr)
 require(bayesSYNC)
 
+bool_simulated_data <- TRUE
+
 args <- commandArgs(trailingOnly = TRUE)
-seed <- if (length(args) >= 1) as.integer(args[1]) else 1
+seed <- if (length(args) >= 1) as.integer(args[1]) else if (bool_simulated_data) 8 else 1
 set.seed(seed)
 
 # TRUE: drop the patients who died within the window (sensitivity analysis);
 # FALSE: keep them (analysis reported in the paper)
 excl_dead <- length(args) >= 2 && args[2] == "excl_dead"
-
-bool_simulated_data <- TRUE
 
 type <- "metabo_cyto_cplt_glyco_main_ct" # CRP, cytokines, complement, glycoproteins, main cell types and metabolites
 

@@ -14,7 +14,7 @@ authors:
     affiliation: MRC Biostatistics Unit, University of Cambridge
 license: GPL-3.0-or-later
 repository-code: "https://github.com/hruffieux/bayesSYNC_paper_code"
-version: 1.0.0
+version: 1.0.1
 keywords:
   - functional data analysis
   - latent factor model

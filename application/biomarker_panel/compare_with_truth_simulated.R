@@ -17,7 +17,7 @@
 ##     with the severity class.
 ##
 ## Writes, next to output.RData, compare_with_truth.txt, compare_with_truth.csv
-## (one row per simulated factor, gathered by summarise_simulated_replicates.R) and
+## (one row per simulated factor) and
 ## figure_S_simulated_panel.pdf (loadings, leading eigenfunction and leading
 ## scores, estimated against true).
 ##
@@ -38,6 +38,14 @@ load(file.path(run_dir, "output.RData"), envir = e)
 stopifnot(isTRUE(e$bool_simulated_data))
 res <- e$res
 truth <- readRDS(file.path(data_dir, "simulated_biomarker_panel_truth.rds"))
+# the analysis of Supplementary Material S10 fits the simulated data with the
+# seed that generated them, the default of analysis_biomarker_panel.R
+if (!identical(as.integer(truth$seed), as.integer(e$seed))) {
+  stop("the simulated data in ", data_dir, " were generated with seed ", truth$seed,
+       " but the fit in ", run_dir, " used seed ", e$seed,
+       "; run analysis_biomarker_panel.R without a seed argument")
+}
+cat("Simulated data and fit: seed", truth$seed, "\n")
 
 subj <- names(e$time_obs)
 stopifnot(all(subj %in% names(truth$list_zeta)))

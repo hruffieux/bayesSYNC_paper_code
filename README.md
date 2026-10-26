@@ -97,17 +97,15 @@ Biomarker panel (Section 6.1):
 | `compare_runs.R <run_dir_a> <run_dir_b>` | correspondence between the factors of two fits, for instance with and without the patients who died |
 | `mefisto_base_biomarker_panel.R <run_dir>` | the comparison with MEFISTO-base (Supplementary Material S8) |
 | `compare_with_truth_simulated.R <run_dir>` | for a fit to simulated data, the comparison of the estimated loadings, eigenfunctions and scores with the values that generated them, and the figure of Supplementary Material S10 |
-| `run_simulated_replicates.sh <n_or_seeds> [n_parallel]` | simulates, fits and compares several data sets, each in its own folder under `output/simulated_replicates/`, with the same seed for the data and the fit; `summarise_simulated_replicates.R` gathers the comparisons |
 
-Supplementary Material S10 shows the simulated data set of seed 8, fitted with seed 8:
+Supplementary Material S10 is the analysis of the simulated panel written by `simulate_cohort_data.R`, fitted with the default settings of `analysis_biomarker_panel.R`:
 
 ```
-Rscript application/simulate_data/simulate_cohort_data.R 8
-Rscript application/biomarker_panel/analysis_biomarker_panel.R 8
-Rscript application/biomarker_panel/compare_with_truth_simulated.R output/<run folder ending in _seed_8>
+Rscript application/biomarker_panel/analysis_biomarker_panel.R
+Rscript application/biomarker_panel/compare_with_truth_simulated.R <run_dir>
 ```
 
-The first command replaces the data simulated with the default seed in `data/`.
+where `<run_dir>` is the folder written by the first command under `output/`.
 
 Transcriptomics (Section 6.2):
 
