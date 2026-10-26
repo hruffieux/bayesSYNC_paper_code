@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23676333.svg)](https://doi.org/10.5281/zenodo.23676333)
+
 # Code for "A scalable Bayesian functional factor model for high-dimensional longitudinal molecular data"
 
 Salima Jaoua, Daniel Temko and Hélène Ruffieux.
