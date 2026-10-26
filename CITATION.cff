@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper and this archive."
+title: "Code for: A scalable Bayesian functional factor model for high-dimensional longitudinal molecular data"
+type: software
+authors:
+  - given-names: Salima
+    family-names: Jaoua
+    affiliation: University of Zurich
+  - given-names: Daniel
+    family-names: Temko
+    affiliation: MRC Biostatistics Unit, University of Cambridge
+  - given-names: Hélène
+    family-names: Ruffieux
+    affiliation: MRC Biostatistics Unit, University of Cambridge
+license: GPL-3.0-or-later
+repository-code: "https://github.com/hruffieux/bayesSYNC_paper_code"
+version: 1.0.0
+keywords:
+  - functional data analysis
+  - latent factor model
+  - variational inference
+  - longitudinal omics

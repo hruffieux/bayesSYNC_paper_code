@@ -1,0 +1,20 @@
+# output of the scripts and simulated data, written by default to these folders
+output/
+data/
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+# outputs that may be written elsewhere in the tree
+*.RData
+*.hdf5
+*.pdf
+slurm_*.out
+
+# KEGG files downloaded at run time (KEGG data are not redistributed here)
+kegg_*.txt
+
+.DS_Store
